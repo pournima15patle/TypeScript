@@ -1,8 +1,13 @@
-import Person=require('./personInfo');
+import Person = require('./personInfo');
+var filestream = require('fs');
 
-class Address{
-    P1:Person=new Person();
-    P1.setfirstName(_firstName);
-            console.log(this.getfirstName);
+var content: any = filestream.readFileSync('address.json');
+var object: any = JSON.parse(content);
 
-};
+var p1 = new Person();
+try {
+    p1.address_book(object)
+} catch (err) {
+    console.log(err);
+
+}

@@ -2,35 +2,44 @@
 class Util {
 
 
-    /**************************************************************************************************
-       * @Purpose   : By ensuring username with minimum 3 characters,replacing USERNAME with userinput
-       *              and print the string.
-       * @descriptipn :Declaring the function and passing the userinput as argument.
-       * @function: Displayname takes the userinput and print it with some sentence.
-       * 
-       ************************************************************************************************/
+  /**************************************************************************************************
+     * @Purpose   : By ensuring username with minimum 3 characters,replacing USERNAME with userinput
+     *              and print the string.
+     * @descriptipn :Declaring the function and passing the userinput as argument.
+     * @function: Displayname takes the userinput and print it with some sentence.
+     * 
+     ************************************************************************************************/
 
-    replaceString(str1, str2, userName) {
-        if (userName.length >= 3) {
-            var resultedString = str1.replace(str2, userName);
-        }
-        console.log(resultedString);
+  replaceString(str1, str2, userName) {
+    try {
+      if (userName.length >= 3) {
+        var resultedString = str1.replace(str2, userName);
+      }
+      console.log(resultedString);
+    } catch (err) {
+      console.log(err);
+
     }
+  }
 
-    checkLeapYear(year1) {
+  checkLeapYear(year1) {
 
-        //console.log(year1);
+    //console.log(year1);
+    try {
+      if (((year1 % 4 == 0) && (year1 % 100 != 0)) ||
+        (year1 % 400 == 0)) {
+        console.log(year1 + ' is leap year ')
+      }
+      else {
+        console.log(year1 + ' is not leap year');
 
-        if (((year1 % 4 == 0) && (year1 % 100 != 0)) ||
-            (year1 % 400 == 0)) {
-            console.log(year1 + ' is leap year ')
-        }
-        else {
-            console.log(year1 + ' is not leap year');
+      }
+    } catch (err) {
+      console.log(err);
 
-        }
     }
-/**********************************Gambler******************************************/
+  }
+  /**********************************Gambler******************************************/
 
   /*GAMBLER*/
   /*
@@ -44,26 +53,31 @@ class Util {
   gambler(stack, goal, totalTime) {
     var win = 0; var noOfTime = 0;
 
-    //loop upto win and lost his all stack and upto total number of times he wants play 
-    while (stack != 0 && goal != stack && noOfTime < totalTime) {
-      // genearate the random number to check weather he wins or lost
-      var ran = Math.round(Math.random());
-      if (ran == 1) {
-        stack++;
-        win++;
+    try {
+      //loop upto win and lost his all stack and upto total number of times he wants play 
+      while (stack != 0 && goal != stack && noOfTime < totalTime) {
+        // genearate the random number to check weather he wins or lost
+        var ran = Math.round(Math.random());
+        if (ran == 1) {
+          stack++;
+          win++;
+        }
+        else {
+          stack--;
+        }
+        noOfTime++;
       }
-      else {
-        stack--;
-      }
-      noOfTime++;
-    }
-    // calculating the total percentage 
-    var winPer = (win / totalTime) * 100;
-    var loosPer = 100 - winPer;
-    console.log("Number of wins " + win)
-    console.log("wining percentage " + winPer);
-    console.log("lossing percentage " + loosPer);
+      // calculating the total percentage 
+      var winPer = (win / totalTime) * 100;
+      var loosPer = 100 - winPer;
+      console.log("Number of wins " + win)
+      console.log("wining percentage " + winPer);
+      console.log("lossing percentage " + loosPer);
 
+    } catch (err) {
+      console.log(err);
+
+    }
   }
 
 } export =Util;

@@ -1,8 +1,8 @@
 var read = require('readline-sync');
-class Utility{
+class Utility {
 getString(): string {
 
-    let value = read.question("");
+    let value = read.question("enter value");
     return value;
     
     }
